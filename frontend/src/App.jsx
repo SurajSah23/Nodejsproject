@@ -7,18 +7,18 @@
     const [responseMessage, setResponseMessage] = useState("");
 
     useEffect(() => {
-      fetch("http://localhost:5000/api/user")
+      fetch("https://nodejsproject-seven.vercel.app/api/user")
         .then((res) => res.json())
         .then((data) => setUser(data));
 
-      fetch("http://localhost:5000/api/about")
+      fetch("https://nodejsproject-seven.vercel.app/api/about")
         .then((res) => res.json())
         .then((data) => setAbout(data));
     }, []);
 
     const handleSubmit = async (e) => {
       e.preventDefault();
-      const res = await fetch("http://localhost:5000/api/contact", {
+      const res = await fetch("https://nodejsproject-seven.vercel.app/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(contact),
