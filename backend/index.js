@@ -20,10 +20,12 @@ const user = {
 // Dummy About Us data
 const aboutUs = {
   title: "About Us",
-  description:
-    "We are a team of dedicated professionals driven by creativity, innovation, and a passion for exceptional design...",
+  description: "We are a team of dedicated professionals driven by creativity, innovation, and a passion for exceptional design. With a commitment to excellence, we strive to push boundaries, transform ideas into reality, and deliver solutions that inspire and leave a lasting impact. Our collaborative approach ensures that every project is executed with precision, attention to detail, and a deep understanding of our clients' unique visions. Whether crafting cutting-edge digital experiences or timeless visual identities, we are devoted to creating designs that not only meet expectations but exceed them.",
   image: "https://images.unsplash.com/photo-1738762388661-f09b9b9b5df2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxNnx8fGVufDB8fHx8fA%3D%3D"
 };
+
+// Store contact messages
+const contacts = [];
 
 // API routes
 app.get("/api/user", (req, res) => {
@@ -34,9 +36,15 @@ app.get("/api/about", (req, res) => {
   res.json(aboutUs);
 });
 
+app.get("/api/contacts", (req, res) => {
+  res.json(contacts);
+});
+
 app.post("/api/contact", (req, res) => {
   const { name, email, message } = req.body;
-  console.log("New contact request:", { name, email, message });
+  const newContact = { name, email, message };
+  contacts.push(newContact);
+  console.log("New contact request:", newContact);
   res.json({ success: true, message: "Your message has been received!" });
 });
 
